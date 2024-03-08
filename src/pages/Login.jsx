@@ -66,6 +66,14 @@ const Login = () => {
             compras, y un panel de administración.
           </Typography>
           <TextField label="Outlined" variant="outlined" />
+          <TextField
+            label="Outlined"
+            variant="outlined"
+            color="primary"
+            autoComplete={false}
+            placeholder="keyner"
+          />
+          <TextField label="Custom Theme TextField" variant="outlined" />
           <Btn
             title="Iniciar sesion"
             capitalize={true}
