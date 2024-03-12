@@ -30,6 +30,23 @@ const theme = createTheme({
         },
       },
     },
+    /*  MuiButton: {
+      styleOverrides: {
+        root: {
+          background: "red",
+          "&:hover .MuiButton-root": {
+            background: "orange",
+          },
+          background: "red",
+          "&:hover .MuiTouchRipple-root": {
+            background: "orange",
+          },
+          "&:hover": {
+            color: "red",
+          },
+        },
+      },
+    }, */
   },
 });
 

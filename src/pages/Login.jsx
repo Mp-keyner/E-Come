@@ -2,9 +2,16 @@ import React from "react";
 import { Avatar, Box, Stack, TextField, Typography } from "@mui/material";
 import Btn from "../components/Btn";
 import useLoginGoogle from "../hooks/useLoginGoogle";
+import ButonCuston from "../components/ButonCuston";
+import useForm from "../hooks/UseFrom";
 
 const Login = () => {
   const { signInWithGoogle } = useLoginGoogle();
+  const { form, email, onChangeInfo } = useForm({
+    email: "keynerdelahoz",
+    password: "",
+  });
+  console.log(form);
   return (
     <Stack
       sx={{
@@ -65,24 +72,23 @@ const Login = () => {
             una interfaz de usuario para ver y gestionar productos, carrito de
             compras, y un panel de administración.
           </Typography>
-          <TextField label="Outlined" variant="outlined" />
           <TextField
-            label="Outlined"
+            label="Custom Theme TextField"
             variant="outlined"
-            color="primary"
-            autoComplete={false}
-            placeholder="keyner"
+            value={email}
+            onChange={({ target: { name, value } }) =>
+              onChangeInfo(value, "email")
+            }
           />
-          <TextField label="Custom Theme TextField" variant="outlined" />
-          <Btn
-            title="Iniciar sesion"
+          <ButonCuston
+            title="Login con google"
+            funtionOnClick={signInWithGoogle}
             capitalize={true}
-            onclli={() => console.log("helio")}
+            Weight={true}
           />
-          <Btn
-            title="Continuar con Google"
-            capitalize={true}
-            onclli={() => signInWithGoogle()}
+          <ButonCuston
+            title="Login con google"
+            funtionOnClick={signInWithGoogle}
           />
         </Stack>
       </Stack>
