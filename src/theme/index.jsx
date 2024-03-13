@@ -64,10 +64,24 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           fontWeight: "bold",
+          link: {
+            borderColor: "blue",
+            background: "red",
+          },
         },
         contained: {
           color: "#fff",
         },
+
+        variants: [
+          {
+            props: { variant: "dashed" },
+            style: {
+              textTransform: "none",
+              border: "1px solid red",
+            },
+          },
+        ],
       },
     },
   },

@@ -55,34 +55,38 @@ const NavBard = () => {
       justifyContent="space-between"
       alignItems="center"
       direction="row"
-      bgcolor="#fff"
+      bgcolor="red"
       height="3pc"
       paddingLeft="1pc"
     >
-      <Box component="img" src={Logo} width="8pc" />
-      <List
-        sx={{
-          width: "100%",
-          maxWidth: 360,
-          display: "flex",
-          gap: "1pc",
-          display: {
-            xs: "none",
-            sm: "flex",
-          },
-        }}
+      <Stack
+        direction="row"
+        alignItems="center"
+        justifyContent="center"
+        spacing={2}
       >
-        {[1, 2, 3].map((value) => (
-          <ListItem key={value} disableGutters>
-            <ListItemText
-              primary={`Line item ${value}`}
-              sx={{
-                fontWeight: "bold",
-              }}
-            />
-          </ListItem>
-        ))}
-      </List>
+        <Box component="img" src={Logo} width="8pc" />
+        <List
+          sx={{
+            width: "100%",
+            maxWidth: 360,
+            display: "flex",
+            gap: "1pc",
+            display: {
+              xs: "none",
+              sm: "flex",
+            },
+          }}
+        >
+          {["Handbags", "Watches", "Skinacare", "Jewellery", "Apparels"].map(
+            (value) => (
+              <Button key={value} variant="text">
+                {value}
+              </Button>
+            )
+          )}
+        </List>
+      </Stack>
       <Button
         sx={{
           display: {

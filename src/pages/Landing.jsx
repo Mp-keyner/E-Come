@@ -34,11 +34,12 @@ const Landing = () => {
       <Stack
         sx={{
           backgroundImage: `url(${hero})`,
-          height: "20pc",
+          height: "23pc",
           width: "95%",
           borderRadius: "2pc",
           marginTop: "1pc",
           alignSelf: "center",
+          backgroundPosition: "center",
         }}
         justifyContent="center"
         alignItems="flex-end"
@@ -66,8 +67,9 @@ const Landing = () => {
             }}
             color="primary"
           >
-            Carry your Funk
+            Mondongo
           </Typography>
+          <Typography>keyner</Typography>
           <Typography
             sx={{
               fontSize: {
