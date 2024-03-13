@@ -7,33 +7,26 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import Btn from "../components/Btn";
-import useLoginGoogle from "../hooks/useLoginGoogle";
-import ButonCuston from "../components/ButonCuston";
-import useForm from "../hooks/UseFrom";
 import NavBard from "../components/NavBard";
 import hero from "../assets/img/image.png";
 
-const Login = () => {
-  const { signInWithGoogle } = useLoginGoogle();
-  const { onChangeInfo, form, email, resetForm } = useForm({
-    email: "",
-    password: "",
-  });
-  const AddLoginUser = (e) => {
-    localStorage.setItem("user", JSON.stringify(e));
-  };
+const Landing = () => {
   return (
-    <Stack alignItems="center" justifyContent="center">
+    <Stack>
       <NavBard />
       <Stack
         bgcolor="#F0F0F0"
-        height="3pc"
         alignItems="center"
         justifyContent="center"
         width="100%"
+        sx={{
+          height: {
+            xs: "5pc",
+            sm: "4pc",
+          },
+        }}
       >
-        <Typography>
+        <Typography width="90%">
           We are currently experiencing local customs clearance delays. For the
           latest updates, please check your order status here
         </Typography>
@@ -45,6 +38,7 @@ const Login = () => {
           width: "95%",
           borderRadius: "2pc",
           marginTop: "1pc",
+          alignSelf: "center",
         }}
         justifyContent="center"
         alignItems="flex-end"
@@ -64,7 +58,10 @@ const Login = () => {
           <Typography
             sx={{
               fontWeight: "bold",
-              fontSize: "60px",
+              fontSize: {
+                xs: "40px",
+                md: "60px",
+              },
               lineHeight: "1",
             }}
             color="primary"
@@ -73,7 +70,10 @@ const Login = () => {
           </Typography>
           <Typography
             sx={{
-              fontSize: "28px",
+              fontSize: {
+                sx: "28px",
+                sm: "16px",
+              },
             }}
             color="primary"
           >
@@ -84,28 +84,15 @@ const Login = () => {
             sx={{
               color: "#fff",
             }}
-            onClick={() => signInWithGoogle()}
           >
             See More
           </Button>
         </Stack>
       </Stack>
-      <TextField
-        placeholder="Hello"
-        onChange={({ target: { value } }) => onChangeInfo(value, "email")}
-        value={email}
-      />
-      <Button
-        variant="contained"
-        onClick={() => {
-          AddLoginUser(form);
-          resetForm();
-        }}
-      >
-        Login
-      </Button>
+      <TextField placeholder="Hello" />
+      <Button variant="contained">Login</Button>
     </Stack>
   );
 };
 
-export default Login;
+export default Landing;

@@ -28,7 +28,7 @@ const useLoginGoogle = () => {
       console.log("todo salio nice");
       localStorage.setItem("USER", JSON.stringify(user));
       console.log(user);
-      navigate("/resgistro");
+      navigate("/Home");
     } catch (error) {
       console.error("Error al iniciar sesión con Google", error);
     }

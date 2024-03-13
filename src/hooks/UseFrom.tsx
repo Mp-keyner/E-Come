@@ -10,23 +10,14 @@ const useForm = (initState) => {
       [key]: value,
     });
   };
-
-  const setForm = (form) => {
-    setState({
-      ...state,
-      ...form,
-    });
-  };
-
   const resetForm = () => {
-    setForm(initState);
+    setState(initState);
   };
 
   return {
     ...state,
     form: state,
     onChangeInfo,
-    setForm,
     resetForm,
   };
 };
