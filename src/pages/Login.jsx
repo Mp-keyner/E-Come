@@ -13,6 +13,7 @@ import ButonCuston from "../components/ButonCuston";
 import useForm from "../hooks/UseFrom";
 import NavBard from "../components/NavBard";
 import hero from "../assets/img/image.png";
+import axios from "axios";
 
 const Login = () => {
   const { signInWithGoogle } = useLoginGoogle();
@@ -20,8 +21,10 @@ const Login = () => {
     email: "",
     password: "",
   });
-  const AddLoginUser = (e) => {
+  const AddLoginUser = async (e) => {
     localStorage.setItem("user", JSON.stringify(e));
+    const respuesta = await axios.get('http://localhost:3000/allproducts')
+    console.log(respuesta)
   };
   return (
     <Stack alignItems="center" justifyContent="center">
@@ -69,7 +72,7 @@ const Login = () => {
             }}
             color="primary"
           >
-            Carry your Funk
+            Login Pages
           </Typography>
           <Typography
             sx={{
