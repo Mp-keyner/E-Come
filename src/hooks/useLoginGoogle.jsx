@@ -3,6 +3,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import ProductApi from "../api/Product";
 
 const useLoginGoogle = () => {
   const navigate = useNavigate();
@@ -23,9 +24,9 @@ const useLoginGoogle = () => {
   const authenticateWithGoogle = async (TokenGoogle) => {
     console.log('desde la ui--', TokenGoogle);
     try {
-       const response = await axios.post('http://localhost:3000/login', { idToken: TokenGoogle }, {
+       const response = await ProductApi.get('login', {
          headers: {
-           'Content-Type': 'application/json'
+           authorization: `Bearer ${TokenGoogle}`
          }
        });
        console.log(response);
@@ -44,6 +45,7 @@ const useLoginGoogle = () => {
       localStorage.setItem("USER", JSON.stringify(user));
       localStorage.setItem("token", TokenGoogle);
       authenticateWithGoogle(TokenGoogle)
+      navigate('/Home')
       console.log('se supone que ya paso')
       console.log(user);
     } catch (error) {
