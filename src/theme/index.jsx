@@ -72,6 +72,7 @@ const theme = createTheme({
         contained: {
           color: "#fff",
         },
+        text: {},
 
         variants: [
           {

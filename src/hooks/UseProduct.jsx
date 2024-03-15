@@ -1,16 +1,32 @@
-import React from 'react'
+import React, { useState } from "react";
+import ProductApi from "../api/Product";
 
 const UseProduct = () => {
-  const GetAllProducts = () => {
-    ProductApi.get('allproducts', {
-        headers: {
-          authorization: `Bearer ${TokenGoogle}`
-        }
-      })
-  }
-  return {
-    GetAllProducts
-  }
-}
+  const [data, setData] = useState([]);
 
-export default UseProduct
+  const GetAllProducts = async (pages = 0) => {
+    try {
+      const resques = await ProductApi.get(`?limit=20&skip=${pages}`);
+      setData(resques.data.products);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const GetProducts = async (id) => {
+    console.log(id);
+    try {
+      const resques = await ProductApi.get(`${id}`);
+      setData(resques.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  return {
+    GetAllProducts,
+    data,
+    GetProducts,
+  };
+};
+
+export default UseProduct;
