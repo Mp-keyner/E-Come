@@ -11,7 +11,7 @@ const theme = createTheme({
       contrastText: "#fff",
     },
     tertiary: {
-      main: "#ffff",
+      main: "#97451F",
       contrastText: "#232323",
     },
     error: {
@@ -72,7 +72,13 @@ const theme = createTheme({
         contained: {
           color: "#fff",
         },
-        text: {},
+        text: {
+          // Aquí puedes definir tus estilos personalizados para la variante 'text'
+          // Por ejemplo, para cambiar el color del texto y el color de fondo al pasar el cursor
+          // "&:hover": {
+          //   backgroundColor: "lightblue",
+          // },
+        },
 
         variants: [
           {

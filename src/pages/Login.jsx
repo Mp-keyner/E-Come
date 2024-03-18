@@ -12,7 +12,7 @@ import useLoginGoogle from "../hooks/useLoginGoogle";
 import ButonCuston from "../components/ButonCuston";
 import useForm from "../hooks/UseFrom";
 import NavBard from "../components/NavBard";
-import hero from "../assets/img/image.png";
+import hero from "../assets/img/loginSection.png";
 import axios from "axios";
 
 const Login = () => {
@@ -23,12 +23,11 @@ const Login = () => {
   });
   const AddLoginUser = async (e) => {
     localStorage.setItem("user", JSON.stringify(e));
-    const respuesta = await axios.get('http://localhost:3000/allproducts')
-    console.log(respuesta)
+    const respuesta = await axios.get("http://localhost:3000/allproducts");
+    console.log(respuesta);
   };
   return (
     <Stack alignItems="center" justifyContent="center">
-      <NavBard />
       <Stack
         bgcolor="#F0F0F0"
         height="3pc"
@@ -50,13 +49,12 @@ const Login = () => {
           marginTop: "1pc",
         }}
         justifyContent="center"
-        alignItems="flex-end"
+        alignItems="flex-start"
       >
         <Stack
           alignItems="flex-start"
           justifyContent="center"
           width="55%"
-          bgcolor="#dededebd"
           padding="0 3pc"
           height="80%"
           sx={{
@@ -69,16 +67,18 @@ const Login = () => {
               fontWeight: "bold",
               fontSize: "60px",
               lineHeight: "1",
+              // color: "#97451F",
             }}
-            color="primary"
+            color="tertiary.main"
           >
             Login Pages
           </Typography>
           <Typography
             sx={{
               fontSize: "28px",
+              // color: "#97451F",
             }}
-            color="primary"
+            color="tertiary.main"
           >
             Trendy handbags collection for your party animal
           </Typography>
@@ -87,26 +87,13 @@ const Login = () => {
             sx={{
               color: "#fff",
             }}
+            color="tertiary"
             onClick={() => signInWithGoogle()}
           >
-            See More
+            Iniciar Sesion
           </Button>
         </Stack>
       </Stack>
-      <TextField
-        placeholder="Hello"
-        onChange={({ target: { value } }) => onChangeInfo(value, "email")}
-        value={email}
-      />
-      <Button
-        variant="contained"
-        onClick={() => {
-          AddLoginUser(form);
-          resetForm();
-        }}
-      >
-        Login
-      </Button>
     </Stack>
   );
 };

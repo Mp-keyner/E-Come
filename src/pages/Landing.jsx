@@ -1,19 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Avatar,
   Box,
   Button,
+  Grid,
   Stack,
   TextField,
   Typography,
 } from "@mui/material";
 import NavBard from "../components/NavBard";
 import hero from "../assets/img/image.png";
+import RecipeReviewCard from "../components/Card";
+import UseProduct from "../hooks/UseProduct";
+import { Link, useNavigate } from "react-router-dom";
 
 const Landing = () => {
+  const navigate = useNavigate();
+  const { GetAllProducts, data } = UseProduct();
+  const [pages, setPages] = useState(0);
+  useEffect(() => {
+    GetAllProducts(pages);
+  }, [pages]);
+  console.log(data);
   return (
     <Stack>
-      <NavBard />
       <Stack
         bgcolor="#F0F0F0"
         alignItems="center"
@@ -27,8 +37,9 @@ const Landing = () => {
         }}
       >
         <Typography width="90%">
-          We are currently experiencing local customs clearance delays. For the
-          latest updates, please check your order status here
+          Actualmente estamos experimentando retrasos en el despacho de aduanas
+          local. Para el últimas actualizaciones, verifique el estado de su
+          pedido aquí
         </Typography>
       </Stack>
       <Stack
@@ -69,7 +80,6 @@ const Landing = () => {
           >
             Mondongo
           </Typography>
-          <Typography>keyner</Typography>
           <Typography
             sx={{
               fontSize: {
@@ -79,20 +89,48 @@ const Landing = () => {
             }}
             color="primary"
           >
-            Trendy handbags collection for your party animal
+            Descubre la calidad excepcional en cada producto de Mondongo,
+            <br />
+            donde la diversidad se encuentra con la excelencia.
           </Typography>
           <Button
             variant="contained"
             sx={{
               color: "#fff",
             }}
+            onClick={() => navigate("/Login")}
           >
-            See More
+            Ver Mas
           </Button>
         </Stack>
       </Stack>
-      <TextField placeholder="Hello" />
-      <Button variant="contained">Login</Button>
+      <Stack justifyContent="center" alignItems="center" marginTop="4pc">
+        <Grid
+          container
+          alignContent="center"
+          justifyContent="center"
+          spacing={2}
+        >
+          {data.map((item) => (
+            <Link
+              to="/Login"
+              key={item.id}
+              style={{
+                margin: "1pc",
+              }}
+            >
+              <Grid item>
+                <RecipeReviewCard
+                  name={item.title}
+                  description={item.description}
+                  thumbnail={item.thumbnail}
+                  category={item.category}
+                />
+              </Grid>
+            </Link>
+          ))}
+        </Grid>
+      </Stack>
     </Stack>
   );
 };

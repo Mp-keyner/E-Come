@@ -10,7 +10,6 @@ const HomeScreeen = () => {
   useEffect(() => {
     GetAllProducts(pages);
   }, [pages]);
-  console.log(data);
   return (
     <Stack justifyContent="center" alignItems="center">
       <Grid container alignContent="center" justifyContent="center" spacing={2}>

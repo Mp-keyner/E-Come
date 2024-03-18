@@ -12,10 +12,11 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import { Stack } from "@mui/material";
 import Logo from "../assets/img/logo.svg";
+import { useNavigate } from "react-router-dom";
 
 const NavBard = () => {
   const [open, setOpen] = React.useState(false);
-
+  const Navigate = useNavigate();
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
   };
@@ -55,23 +56,26 @@ const NavBard = () => {
       justifyContent="space-between"
       alignItems="center"
       direction="row"
-      bgcolor="red"
       height="3pc"
-      paddingLeft="1pc"
+      padding="0 1pc"
     >
       <Stack
         direction="row"
         alignItems="center"
-        justifyContent="center"
+        justifyContent="space-between"
         spacing={2}
+        width="100%"
       >
-        <Box component="img" src={Logo} width="8pc" />
+        <Box
+          component="img"
+          src={Logo}
+          width="8pc"
+          onClick={() => Navigate("/Home")}
+        />
         <List
           sx={{
-            width: "100%",
-            maxWidth: 360,
             display: "flex",
-            gap: "1pc",
+            gap: "0.6pc",
             display: {
               xs: "none",
               sm: "flex",

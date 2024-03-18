@@ -7,10 +7,12 @@ import Landing from "./pages/Landing";
 import ProtectedRoute from "./components/ProteteRouter";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Description from "./pages/Description";
+import NavBard from "./components/NavBard";
 
 const App = () => {
   return (
     <BrowserRouter>
+      <NavBard />
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
