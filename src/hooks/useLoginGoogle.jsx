@@ -45,7 +45,7 @@ const useLoginGoogle = () => {
       localStorage.setItem("USER", JSON.stringify(user));
       localStorage.setItem("token", TokenGoogle);
       authenticateWithGoogle(TokenGoogle)
-      navigate('/Home')
+      navigate('/Home/d')
       console.log('se supone que ya paso')
       console.log(user);
     } catch (error) {

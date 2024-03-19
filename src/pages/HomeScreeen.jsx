@@ -2,18 +2,20 @@ import React, { useEffect, useState } from "react";
 import UseProduct from "../hooks/UseProduct";
 import { Button, Grid, Stack } from "@mui/material";
 import RecipeReviewCard from "../components/Card";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const HomeScreeen = () => {
-  const { GetAllProducts, data } = UseProduct();
+  const { category } = useParams()
+  console.log(category)
+  const { GetAllProducts, data, GetProductsCategory } = UseProduct();
   const [pages, setPages] = useState(0);
   useEffect(() => {
-    GetAllProducts(pages);
+      GetAllProducts(pages);
   }, [pages]);
   return (
     <Stack justifyContent="center" alignItems="center">
       <Grid container alignContent="center" justifyContent="center" spacing={2}>
-        {data.map((item) => (
+        {data?.map((item) => (
           <Grid item key={item.id}>
             <Link to={`/Description/${item.id}`}>
               <RecipeReviewCard

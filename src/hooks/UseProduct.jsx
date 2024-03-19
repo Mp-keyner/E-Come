@@ -22,10 +22,20 @@ const UseProduct = () => {
       console.log(error);
     }
   };
+  const GetProductsCategory = async (category) => {
+    console.log(category);
+    try {
+      const resques = await ProductApi.get(`/category/${category}`);
+      setData(resques.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return {
     GetAllProducts,
     data,
     GetProducts,
+    GetProductsCategory
   };
 };
 

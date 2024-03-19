@@ -13,6 +13,7 @@ import hero from "../assets/img/image.png";
 import RecipeReviewCard from "../components/Card";
 import UseProduct from "../hooks/UseProduct";
 import { Link, useNavigate } from "react-router-dom";
+import { motion } from 'framer-motion';
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -67,41 +68,48 @@ const Landing = () => {
           }}
           spacing={1}
         >
-          <Typography
-            sx={{
-              fontWeight: "bold",
-              fontSize: {
-                xs: "40px",
-                md: "60px",
-              },
-              lineHeight: "1",
-            }}
-            color="primary"
+
+          <motion.div
+            initial={{ y: 10, opacity: 0 }} // Comienza desde abajo (y: 100) y con opacidad 0
+            animate={{ y: 0, opacity: 1 }} // Anima hacia arriba (y: 0) y con opacidad 1
+            transition={{ duration: 0.5 }} // Duración de la animación
           >
-            Mondongo
-          </Typography>
-          <Typography
-            sx={{
-              fontSize: {
-                sx: "28px",
-                sm: "16px",
-              },
-            }}
-            color="primary"
-          >
-            Descubre la calidad excepcional en cada producto de Mondongo,
-            <br />
-            donde la diversidad se encuentra con la excelencia.
-          </Typography>
-          <Button
-            variant="contained"
-            sx={{
-              color: "#fff",
-            }}
-            onClick={() => navigate("/Login")}
-          >
-            Ver Mas
-          </Button>
+            <Typography
+              sx={{
+                fontWeight: "bold",
+                fontSize: {
+                  xs: "40px",
+                  md: "60px",
+                },
+                lineHeight: "1",
+              }}
+              color="primary"
+            >
+              Mondongo
+            </Typography>
+            <Typography
+              sx={{
+                fontSize: {
+                  sx: "28px",
+                  sm: "16px",
+                },
+              }}
+              color="primary"
+            >
+              Descubre la calidad excepcional en cada producto de Mondongo,
+              <br />
+              donde la diversidad se encuentra con la excelencia.
+            </Typography>
+            <Button
+              variant="contained"
+              sx={{
+                color: "#fff",
+              }}
+              onClick={() => navigate("/Login")}
+            >
+              Ver Mas
+            </Button>
+          </motion.div>
         </Stack>
       </Stack>
       <Stack justifyContent="center" alignItems="center" marginTop="4pc">
@@ -109,25 +117,35 @@ const Landing = () => {
           container
           alignContent="center"
           justifyContent="center"
-          spacing={2}
+          spacing={0}
         >
-          {data.map((item) => (
-            <Link
-              to="/Login"
+          {data.map((item, index) => (
+            <motion.div
               key={item.id}
+              initial={{ y: 10, opacity: 0 }} 
+              animate={{ y: 0, opacity: 1 }} 
+              transition={{ duration: 0.5 , delay : 0.1 + (index * 0.1)}}
               style={{
-                margin: "1pc",
+                margin: '0 1pc'
               }}
             >
-              <Grid item>
-                <RecipeReviewCard
-                  name={item.title}
-                  description={item.description}
-                  thumbnail={item.thumbnail}
-                  category={item.category}
-                />
-              </Grid>
-            </Link>
+              <Link
+                to="/Login"
+
+                style={{
+                  margin: "1pc",
+                }}
+              >
+                <Grid item>
+                  <RecipeReviewCard
+                    name={item.title}
+                    description={item.description}
+                    thumbnail={item.thumbnail}
+                    category={item.category}
+                  />
+                </Grid>
+              </Link>
+            </motion.div>
           ))}
         </Grid>
       </Stack>

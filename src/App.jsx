@@ -17,7 +17,7 @@ const App = () => {
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route
-          path="/Home"
+          path="/Home/:category"
           element={
             <ProtectedRoute>
               <HomeScreeen />{" "}
