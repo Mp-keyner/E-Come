@@ -13,7 +13,8 @@ import hero from "../assets/img/image.png";
 import RecipeReviewCard from "../components/Card";
 import UseProduct from "../hooks/UseProduct";
 import { Link, useNavigate } from "react-router-dom";
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
+import Goku from "../assets/img/goku.png";
 
 const Landing = () => {
   const navigate = useNavigate();
@@ -68,47 +69,71 @@ const Landing = () => {
           }}
           spacing={1}
         >
-
           <motion.div
-            initial={{ y: 10, opacity: 0 }} // Comienza desde abajo (y: 100) y con opacidad 0
-            animate={{ y: 0, opacity: 1 }} // Anima hacia arriba (y: 0) y con opacidad 1
+            initial={{ y: 50, x: 100, opacity: 0 }} // Comienza desde abajo (y: 100) y con opacidad 0
+            animate={{ y: 0, x: 0, opacity: 1 }} // Anima hacia arriba (y: 0) y con opacidad 1
             transition={{ duration: 0.5 }} // Duración de la animación
           >
-            <Typography
+            <Stack
+              spacing={5}
+              alignItems="center"
+              justifyContent="center"
               sx={{
-                fontWeight: "bold",
-                fontSize: {
-                  xs: "40px",
-                  md: "60px",
-                },
-                lineHeight: "1",
-              }}
-              color="primary"
-            >
-              Mondongo
-            </Typography>
-            <Typography
-              sx={{
-                fontSize: {
-                  sx: "28px",
-                  sm: "16px",
+                flexDirection: {
+                  xs: "column",
+                  md: "row",
                 },
               }}
-              color="primary"
             >
-              Descubre la calidad excepcional en cada producto de Mondongo,
-              <br />
-              donde la diversidad se encuentra con la excelencia.
-            </Typography>
-            <Button
-              variant="contained"
-              sx={{
-                color: "#fff",
-              }}
-              onClick={() => navigate("/Login")}
-            >
-              Ver Mas
-            </Button>
+              <Stack width="20pc">
+                <Typography
+                  sx={{
+                    fontWeight: "bold",
+                    fontSize: {
+                      xs: "40px",
+                      md: "60px",
+                    },
+                    lineHeight: "1",
+                  }}
+                  color="primary"
+                >
+                  Mondongo
+                </Typography>
+                <Typography
+                  sx={{
+                    fontSize: {
+                      sx: "28px",
+                      sm: "16px",
+                    },
+                  }}
+                  color="primary"
+                >
+                  Descubre la calidad excepcional en cada producto de Mondongo,
+                  <br />
+                  donde la diversidad se encuentra con la excelencia.
+                </Typography>
+                <Button
+                  variant="contained"
+                  sx={{
+                    color: "#fff",
+                  }}
+                  onClick={() => navigate("/Login")}
+                >
+                  Ver Mas
+                </Button>
+              </Stack>
+              <Box
+                component="img"
+                src={Goku}
+                sx={{
+                  width: {
+                    sx: "2pc",
+                    md: "15pc",
+                  },
+                  objectFit: "cover",
+                }}
+              />
+            </Stack>
           </motion.div>
         </Stack>
       </Stack>
@@ -122,16 +147,15 @@ const Landing = () => {
           {data.map((item, index) => (
             <motion.div
               key={item.id}
-              initial={{ y: 10, opacity: 0 }} 
-              animate={{ y: 0, opacity: 1 }} 
-              transition={{ duration: 0.5 , delay : 0.1 + (index * 0.1)}}
+              initial={{ y: 10, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.1 + index * 0.1 }}
               style={{
-                margin: '0 1pc'
+                margin: "0 1pc",
               }}
             >
               <Link
                 to="/Login"
-
                 style={{
                   margin: "1pc",
                 }}
